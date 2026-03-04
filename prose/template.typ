@@ -77,13 +77,13 @@
     show heading: it => { block(it) }
 
     // Media show rules
-    set figure.caption(separator: [. ])
     show figure: it => align(center)[
       #v(par-spacing)
       #it
       #v(par-spacing)
     ]
-    show figure.where(kind: image): set figure(supplement: [Fig.])
+    set figure.caption(separator: [. ])
+    show figure.caption: it => box(align(left, it))
     show figure.where(kind: table): set figure.caption(position: top)
 
     body
