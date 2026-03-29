@@ -48,7 +48,7 @@
     // Authors
     if authors != () {
       align(center, {
-        authors.map(author => [*#author*]).join(", ")
+        authors.map(author => text(author, weight: "bold")).join(", ")
         v(intro-vspacing, weak: true)
       })
     }
@@ -65,16 +65,9 @@
   {
     show: columns.with(2, gutter: 1.3em)
 
+    show heading: set text(weight: "regular", style: "italic")
+    show heading.where(level: 1): set text(weight: "bold", style: "normal")
     set heading(numbering: (..numbers) => numbers.pos().map(str).join(".") + ".")
-    show heading: it => {
-      set text(weight: "regular", style: "italic")
-      it
-    }
-    show heading.where(level: 1): it => {
-      set text(weight: "bold", style: "normal")
-      [#counter(heading).at(here()).at(0);. #it.body]
-    }
-    show heading: it => { block(it) }
 
     // Media show rules
     show figure: it => align(center)[
