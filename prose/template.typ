@@ -1,8 +1,5 @@
 // template: manual edits from https://github.com/shunichironomura/iac-typst-template. Was "MIT No Attribution License".
 
-// recall order of show statements:
-// show_1; show_2; blah is like show_1(show_2(blah))
-
 #let project(
   paper-size: "us-letter",
   project-title: [],
@@ -68,9 +65,8 @@
   {
     show: columns.with(2, gutter: 1.3em)
 
-    show heading: it => block(it)
-    show heading.where(level: 1): it => text(it, weight: "bold", style: "normal")
-    show heading: it => text(it, weight: "regular", style: "italic")
+    show heading: set text(weight: "regular", style: "italic")
+    show heading.where(level: 1): set text(weight: "bold", style: "normal")
     set heading(numbering: (..numbers) => numbers.pos().map(str).join(".") + ".")
 
     // Media show rules
