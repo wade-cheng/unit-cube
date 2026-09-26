@@ -66,18 +66,18 @@
     show: columns.with(2, gutter: 1.3em)
 
     show heading: set text(weight: "regular", style: "italic")
+    show heading: set block(below: 1.1em, above: 1.1em)
     show heading.where(level: 1): set text(weight: "bold", style: "normal")
-    set heading(numbering: (..numbers) => numbers.pos().map(str).join(".") + ".")
+    set heading(numbering: "1.")
 
     // Media show rules
-    show figure: it => align(center)[
-      #v(par-spacing)
-      #it
-      #v(par-spacing)
-    ]
+    show figure: set block(below: 1.3em, above: 1.3em)
     set figure.caption(separator: [. ])
     show figure.caption: it => box(align(left, it))
     show figure.where(kind: table): set figure.caption(position: top)
+
+    // discourage hyphenation
+    set text(costs: (hyphenation: 150%))
 
     body
   }
